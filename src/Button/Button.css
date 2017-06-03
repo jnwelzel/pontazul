@@ -1,0 +1,30 @@
+.Button {
+  display: inline-block;
+  padding: 6px 30px;
+  margin-bottom: 0;
+  font-size: 13px;
+  font-weight: 100;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  height: 40px;
+}
+
+.Button.green {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.Button.green:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}

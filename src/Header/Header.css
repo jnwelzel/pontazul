@@ -1,0 +1,16 @@
+.Header-background {
+  background-color: #217CE6;
+}
+
+.Header-bar {
+  align-items: center;
+  color: #FFFFFF;
+  display: flex;
+  font-size: 20px;
+  height: 50px;
+}
+
+.Header-logo {
+  height: 36px;
+  margin-left: -10px;
+}
