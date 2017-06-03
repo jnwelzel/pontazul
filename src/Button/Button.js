@@ -3,8 +3,8 @@ import cx from 'classnames';
 
 import './Button.css';
 
-const Button = ({ children, className }) => (
-  <button className={cx('Button', className)}>{children}</button>
+const Button = (props) => (
+  <button {...props} className={cx('Button', props.className)}>{props.children}</button>
 );
 
 export default Button;

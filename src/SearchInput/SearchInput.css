@@ -1,0 +1,20 @@
+.SearchInput-wrapper {
+  display: flex;
+}
+
+.SearchInput-button {
+  background-color: #F7F9FC;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 13px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+}
+
+.SearchInput-button:focus {
+  outline: 0;
+}

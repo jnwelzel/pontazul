@@ -17,6 +17,10 @@
   height: 40px;
 }
 
+.Button:focus {
+  outline: 0;
+}
+
 .Button.green {
   color: #fff;
   background-color: #5cb85c;

@@ -3,7 +3,8 @@ import React from 'react';
 import Controls from './Controls';
 import { INITIAL_DATA } from '../appData';
 import Table from './Table';
-import { searchByBrandOrFuel } from './core'
+import { searchByBrandOrFuel } from './core';
+import CarForm from './CarForm';
 
 class TableContainer extends React.PureComponent {
   constructor(props) {
@@ -18,11 +19,17 @@ class TableContainer extends React.PureComponent {
     };
     
     this._searchHandler = (event) => this.searchHandler(event);
+    this._toggleForm = () => this.toggleForm();
   };
   
   render() {
     return <div className="container">
-      <Controls onSubmitSearch={this._searchHandler} />
+      <Controls onSubmitSearch={this._searchHandler} onClickNewCar={this._toggleForm} />
+      {
+        this.state.showForm ?
+          <CarForm visible={this.state.showForm} /> :
+          null
+      }
       <Table carsArray={this.state.filteredCarsArray} />
     </div>
   };
@@ -36,6 +43,13 @@ class TableContainer extends React.PureComponent {
     
     this.setState({
       filteredCarsArray: searchResult
+    });
+  };
+  
+  toggleForm() {
+    console.log('shu')
+    this.setState({
+      showForm: !this.state.showForm
     });
   };
 };

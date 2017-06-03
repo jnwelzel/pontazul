@@ -1,17 +1,18 @@
 import React from 'react';
 
 import './Controls.css';
-import Button from '../../Button'
+import Button from '../../Button';
+import SearchInput from '../../SearchInput';
 
-const ControlsContainer = ({ onSubmitSearch }) => (
+const ControlsContainer = ({ onSubmitSearch, onClickNewCar }) => (
   <div className="container">
     <div className="Controls-wrapper">
       <div>
-        <Button className="green">Novo Carro</Button>
+        <Button className="green" onClick={() => {onClickNewCar()}}>Novo Carro</Button>
       </div>
       <div className="Controls-search">
         <form onSubmit={(event) => onSubmitSearch(event)}>
-          <input placeholder="Pesquisar" name="searchInput" />
+          <SearchInput placeholder="Pesquisar" name="searchInput" />
         </form>
       </div>
     </div>
