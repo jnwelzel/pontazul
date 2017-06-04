@@ -10,15 +10,9 @@ import { chunk } from '../utils/array';
 
 const PAGE_SIZE = 5;
 
-const getPagesCount = (arrayLength, pageSize) => (
-  Math.ceil(arrayLength / pageSize)
-)
-
 class TableContainer extends React.PureComponent {
   constructor(props) {
     super(props);
-    
-    console.log('ayy lmao', INITIAL_DATA.sort(compareCarPlates));
     
     this.state = {
       carsArray: INITIAL_DATA.slice().sort(compareCarPlates),
@@ -36,7 +30,7 @@ class TableContainer extends React.PureComponent {
   
   render() {
     return <div className="container">
-      <Controls onSubmitSearch={this._searchHandler} onClickNewCar={this._toggleForm} />
+      <Controls onSubmitSearch={this._searchHandler} onClickNewCar={this._toggleForm} formIsVisible={this.state.showForm} />
       {
         this.state.showForm ?
           <CarForm onSubmitHandler={this._submitFormHandler} /> :

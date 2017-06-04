@@ -4,11 +4,11 @@ import './Controls.css';
 import Button from '../../Button';
 import SearchInput from '../../SearchInput';
 
-const ControlsContainer = ({ onSubmitSearch, onClickNewCar }) => (
+const ControlsContainer = ({ onSubmitSearch, onClickNewCar, formIsVisible }) => (
   <div className="container">
     <div className="Controls-wrapper">
       <div>
-        <Button className="green" onClick={() => {onClickNewCar()}}>Novo Carro</Button>
+        <Button className={formIsVisible ? "red" : "green"} onClick={() => {onClickNewCar()}}>{formIsVisible ? 'Cancelar' : 'Novo carro'}</Button>
       </div>
       <div className="Controls-search">
         <form onSubmit={(event) => onSubmitSearch(event)}>

@@ -42,7 +42,7 @@ const CarForm = ({ onSubmitHandler = () => {} }) => (
 
       <div className="CarForm-info">* Campos obrigatórios</div>
       
-      <Button type="submit">Salvar</Button>
+      <Button className="blue" type="submit">Salvar</Button>
     </form>
   </div>
 );
