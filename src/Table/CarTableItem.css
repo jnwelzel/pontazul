@@ -21,3 +21,7 @@
 .CarTableItem-column {
   width: 15.7%;
 }
+
+.CarTableItem-selected {
+  background-color: #D3E6FA;
+}

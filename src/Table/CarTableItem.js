@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames'
 
 import './CarTableItem.css';
 import { toBrazilianReal } from '../utils/format';
@@ -12,7 +13,7 @@ const getImage = imageURL => {
 }
 
 const CarTableItem = ({ car, isSelected = false, onSelectCar }) => (
-  <div className="CarTableItem-wrapper">
+  <div className={cx("CarTableItem-wrapper", {"CarTableItem-selected": isSelected})}>
     <div className="CarTableItem-checkbox"><input type="checkbox" checked={isSelected} onChange={(event) => {onSelectCar(event.target.checked, car.id)}} /></div>
     <div className="CarTableItem-column">{car.placa}</div>
     <div className="CarTableItem-column">{car.modelo}</div>
