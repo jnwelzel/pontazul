@@ -2,6 +2,10 @@
   margin-top: 20px;
 }
 
+.TableContainer-editar {
+  margin: 20px 0 0 20px;
+}
+
 .TableContainer-empty {
   color: #c5c5c5;
   font-size: 20px;

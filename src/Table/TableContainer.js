@@ -64,6 +64,12 @@ class TableContainer extends React.PureComponent {
       }
       
       {
+        this.state.selectedItems.length === 1 ?
+        <Button className="blue TableContainer-editar" onClick={event => this.onClickEditHandler()}>Editar</Button> :
+        null
+      }
+      
+      {
         this.state.filteredCarsArray.length > 1 ?
         <Paginator
           pagesCount={this.state.filteredCarsArray.length}
@@ -169,6 +175,13 @@ class TableContainer extends React.PureComponent {
       filteredCarsArray: chunk(newCarsArray.slice(), PAGE_SIZE),
       currentPage: 1
     })
+  }
+  
+  onClickEditHandler() {
+    this.setState({
+      showForm: !this.state.showForm,
+      validationErrors: []
+    });
   }
 };
 
