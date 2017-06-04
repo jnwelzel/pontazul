@@ -3,23 +3,24 @@ import React from 'react';
 import Input from '../../Input';
 import './CarForm.css';
 import Button from '../../Button';
+import { validateCarForm } from '../core';
 
-const CarForm = () => (
+const CarForm = ({ onSubmitHandler = () => {} }) => (
   <div className="CarForm-wrapper">
-    <form className="CarForm-form">
+    <form className="CarForm-form" onSubmit={(event) => {onSubmitHandler(event, validateCarForm(event));}}>
       <div className="CarForm-input">
-        <label htmlFor="plateInput">Placa</label>
-        <Input name="plateInput" placeholder="AAA-9999" />
+        <label htmlFor="plateInput">Placa *</label>
+        <Input name="plateInput" placeholder="AAA-9999" className="CarForm-plate" />
+      </div>
+
+      <div className="CarForm-input">
+        <label htmlFor="brandInput">Marca *</label>
+        <Input name="brandInput" />
       </div>
       
       <div className="CarForm-input">
-        <label htmlFor="modelInput">Modelo</label>
+        <label htmlFor="modelInput">Modelo *</label>
         <Input name="modelInput" />
-      </div>
-
-      <div className="CarForm-input">
-        <label htmlFor="brandInput">Marca</label>
-        <Input name="brandInput" />
       </div>
       
       <div className="CarForm-input">
@@ -34,11 +35,12 @@ const CarForm = () => (
       
       <div className="CarForm-input">
         <label htmlFor="costInput">Valor</label>
-        <Input name="costInput" />
+        <Input name="costInput" type="number" />
       </div>
 
-      <Button>Salvar</Button>
+      <Button type="submit">Salvar</Button>
     </form>
+    <div>* Campos obrigatórios</div>
   </div>
 );
 

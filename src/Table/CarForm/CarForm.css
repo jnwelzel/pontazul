@@ -1,16 +1,20 @@
 .CarForm-wrapper {
+  color: #43607C;
+  font-size: 14px;
   margin-top: 20px;
 }
 
 .CarForm-wrapper label {
-  color: #43607C;
-  font-size: 14px;
   margin-right: 10px;
 }
 
 .CarForm-form {
   display: flex;
   flex-wrap: wrap;
+}
+
+.CarForm-plate {
+  text-transform: uppercase;
 }
 
 .CarForm-input {

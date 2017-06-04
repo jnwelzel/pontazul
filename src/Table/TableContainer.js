@@ -20,6 +20,7 @@ class TableContainer extends React.PureComponent {
     
     this._searchHandler = (event) => this.searchHandler(event);
     this._toggleForm = () => this.toggleForm();
+    this._submitFormHandler = (event, validationObject) => this.submitFormHandler(validationObject);
   };
   
   render() {
@@ -27,7 +28,7 @@ class TableContainer extends React.PureComponent {
       <Controls onSubmitSearch={this._searchHandler} onClickNewCar={this._toggleForm} />
       {
         this.state.showForm ?
-          <CarForm visible={this.state.showForm} /> :
+          <CarForm onSubmitHandler={this._submitFormHandler} /> :
           null
       }
       <Table carsArray={this.state.filteredCarsArray} />
@@ -47,11 +48,32 @@ class TableContainer extends React.PureComponent {
   };
   
   toggleForm() {
-    console.log('shu')
     this.setState({
       showForm: !this.state.showForm
     });
   };
+  
+  submitFormHandler({ validationErrors, plateInput, modelInput, brandInput, imageInput, fuelInput, costInput }) {
+    if (validationErrors.length > 0) {
+      console.log('Erros', validationErrors);
+    } else {
+      const newCar = {
+        placa: plateInput,
+        modelo: modelInput,
+        marca: brandInput,
+        imagem: imageInput,
+        combustivel: fuelInput,
+        valor: costInput
+      };
+      const newCarsArray = this.state.carsArray.concat([newCar])
+      
+      this.setState({
+        carsArray: newCarsArray,
+        filteredCarsArray: newCarsArray,
+        showForm: false
+      });
+    }
+  }
 };
 
 export default TableContainer;
