@@ -9,7 +9,7 @@ const getCars = (carsArray, selectedCars, onSelectCar) => (
   ))
 )
 
-const Table = ({ carsArray, selectedCars, onSelectCar, allSelected, onSelectAll }) => (
+const Table = ({ carsArray = [], selectedCars, onSelectCar, allSelected, onSelectAll }) => (
   <div className="Table-wrapper">
     <div className="Table-headers">
       <div className="Table-checkbox"><input type="checkbox" checked={allSelected} onChange={(event) => {onSelectAll(event.target.checked)}} /></div>

@@ -45,13 +45,17 @@ class TableContainer extends React.PureComponent {
           null
       }
       
-      <Table
-        carsArray={this.state.filteredCarsArray[this.state.currentPage - 1]}
-        selectedCars={this.state.selectedItems}
-        onSelectCar={this._onSelectCarHandler}
-        allSelected={this.state.allCarsSelected}
-        onSelectAll={this._onSelectAll}
-      />
+      {
+        this.state.filteredCarsArray.length > 0 ?
+        <Table
+          carsArray={this.state.filteredCarsArray[this.state.currentPage - 1]}
+          selectedCars={this.state.selectedItems}
+          onSelectCar={this._onSelectCarHandler}
+          allSelected={this.state.allCarsSelected}
+          onSelectAll={this._onSelectAll}
+        /> :
+        <div className="TableContainer-empty">Nenhum carro encontrado</div>
+      }
       
       {
         this.state.selectedItems.length > 0 ?
