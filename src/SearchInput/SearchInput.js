@@ -10,9 +10,9 @@ const INPUT_STYLES = {
   height: 'auto'
 }
 
-const SearchInput = () => (
+const SearchInput = (props) => (
   <div className="SearchInput-wrapper">
-    <Input placeholder="Pesquisar" name="searchInput" style={INPUT_STYLES} />
+    <Input placeholder="Pesquisar" {...props} name="searchInput" style={INPUT_STYLES} />
     <button type="submit" className="SearchInput-button" style={{ backgroundImage: `url(${searchIcon})`}} />
   </div>
 );

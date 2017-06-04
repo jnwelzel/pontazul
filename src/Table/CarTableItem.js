@@ -11,7 +11,7 @@ const getImage = imageURL => {
   return 'Sem foto'
 }
 
-const CarTableItem = ({ car }) => (
+const CarTableItem = ({ car, isSelected = false }) => (
   <div className="CarTableItem-wrapper">
     <div className="CarTableItem-checkbox"><input type="checkbox" /></div>
     <div className="CarTableItem-column">{car.placa}</div>

@@ -12,7 +12,7 @@ const ControlsContainer = ({ onSubmitSearch, onClickNewCar }) => (
       </div>
       <div className="Controls-search">
         <form onSubmit={(event) => onSubmitSearch(event)}>
-          <SearchInput placeholder="Pesquisar" name="searchInput" />
+          <SearchInput title="Pesquisar por marca ou combustível" />
         </form>
       </div>
     </div>
