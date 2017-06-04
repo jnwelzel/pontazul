@@ -3,7 +3,7 @@ import React from 'react';
 import Controls from './Controls';
 import { INITIAL_DATA } from '../appData';
 import Table from './Table';
-import { searchByBrandOrFuel } from './core';
+import { searchByBrandOrFuel, compareCarPlates } from './core';
 import CarForm from './CarForm';
 
 class TableContainer extends React.PureComponent {
@@ -65,7 +65,7 @@ class TableContainer extends React.PureComponent {
         combustivel: fuelInput,
         valor: costInput
       };
-      const newCarsArray = this.state.carsArray.concat([newCar])
+      const newCarsArray = this.state.carsArray.concat([newCar]).sort(compareCarPlates)
       
       this.setState({
         carsArray: newCarsArray,

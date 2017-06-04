@@ -37,3 +37,15 @@ export const validateCarForm = event => {
   
   return { validationErrors, plateInput, modelInput, brandInput, imageInput, fuelInput, costInput };
 }
+
+export const compareCarPlates = (a, b) => {
+  if (a.placa < b.placa) {
+    return -1;
+  }
+  
+  if (a.placa > b.placa) {
+    return 1;
+  }
+  
+  return 0;
+}
