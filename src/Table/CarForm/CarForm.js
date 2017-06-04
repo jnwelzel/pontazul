@@ -11,17 +11,17 @@ const CarForm = ({ onSubmitHandler = () => {} }) => (
       <div className="CarForm-inline">
         <div className="CarForm-input">
           <label htmlFor="plateInput">Placa *</label>
-          <Input name="plateInput" placeholder="AAA-9999" className="CarForm-plate" />
-        </div>
-        
-        <div className="CarForm-input">
-          <label htmlFor="brandInput">Marca *</label>
-          <Input name="brandInput" />
+          <Input name="plateInput" placeholder="AAA-9999" className="CarForm-plate" maxLength="8" />
         </div>
         
         <div className="CarForm-input">
           <label htmlFor="modelInput">Modelo *</label>
           <Input name="modelInput" />
+        </div>
+        
+        <div className="CarForm-input">
+          <label htmlFor="brandInput">Marca *</label>
+          <Input name="brandInput" />
         </div>
         
         <div className="CarForm-input">

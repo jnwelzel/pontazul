@@ -25,7 +25,21 @@ export const INITIAL_DATA = [
     "imagem": null,
     "marca": "Ford",
     "modelo": "Fusion",
-    "placa": "ZAS-3312",
+    "placa": "SAS-3312",
     "valor": 20000
+  }, {
+    "combustivel": "Flex",
+    "imagem": null,
+    "marca": "Audi",
+    "modelo": "TT",
+    "placa": "ZAS-3312",
+    "valor": 89000
+  }, {
+    "combustivel": "Flex",
+    "imagem": null,
+    "marca": "Fiat",
+    "modelo": "Prêmio",
+    "placa": "ADR-0332",
+    "valor": 3000
   }
 ];

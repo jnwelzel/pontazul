@@ -5,22 +5,33 @@ import { INITIAL_DATA } from '../appData';
 import Table from './Table';
 import { searchByBrandOrFuel, compareCarPlates } from './core';
 import CarForm from './CarForm';
+import Paginator from '../Paginator';
+import { chunk } from '../utils/array';
+
+const PAGE_SIZE = 5;
+
+const getPagesCount = (arrayLength, pageSize) => (
+  Math.ceil(arrayLength / pageSize)
+)
 
 class TableContainer extends React.PureComponent {
   constructor(props) {
     super(props);
     
+    console.log('ayy lmao', INITIAL_DATA.sort(compareCarPlates));
+    
     this.state = {
-      carsArray: INITIAL_DATA,
+      carsArray: INITIAL_DATA.slice().sort(compareCarPlates),
       showForm: false,
       currentPage: 1,
       selectedItems: [],
-      filteredCarsArray: INITIAL_DATA
+      filteredCarsArray: chunk(INITIAL_DATA.slice(), PAGE_SIZE)
     };
     
     this._searchHandler = (event) => this.searchHandler(event);
     this._toggleForm = () => this.toggleForm();
     this._submitFormHandler = (event, validationObject) => this.submitFormHandler(validationObject);
+    this._paginationHandler = (pageNumber) => this.paginationHandler(pageNumber);
   };
   
   render() {
@@ -31,7 +42,16 @@ class TableContainer extends React.PureComponent {
           <CarForm onSubmitHandler={this._submitFormHandler} /> :
           null
       }
-      <Table carsArray={this.state.filteredCarsArray} />
+      <Table carsArray={this.state.filteredCarsArray[this.state.currentPage - 1]} />
+      {
+        this.state.filteredCarsArray.length > 1 ?
+        <Paginator
+          pagesCount={this.state.filteredCarsArray.length}
+          currentPage={this.state.currentPage}
+          onClickPage={this._paginationHandler}
+        /> :
+        null
+      }
     </div>
   };
   
@@ -40,10 +60,10 @@ class TableContainer extends React.PureComponent {
     const searchValue = event.target.elements.searchInput.value.trim();
     const searchResult = searchValue ?
       searchByBrandOrFuel(this.state.carsArray, searchValue) :
-      this.state.carsArray;
+      this.state.carsArray.slice();
     
     this.setState({
-      filteredCarsArray: searchResult
+      filteredCarsArray: chunk(searchResult, PAGE_SIZE)
     });
   };
   
@@ -65,15 +85,23 @@ class TableContainer extends React.PureComponent {
         combustivel: fuelInput,
         valor: costInput
       };
-      const newCarsArray = this.state.carsArray.concat([newCar]).sort(compareCarPlates)
+      const newCarsArray = this.state.carsArray.slice();
+      newCarsArray.push(newCar);
       
       this.setState({
-        carsArray: newCarsArray,
-        filteredCarsArray: newCarsArray,
-        showForm: false
+        carsArray: newCarsArray.sort(compareCarPlates),
+        filteredCarsArray: chunk(newCarsArray.slice(), PAGE_SIZE),
+        showForm: false,
+        currentPage: 1
       });
     }
-  }
+  };
+  
+  paginationHandler(pageNumber) {
+    this.setState({
+      currentPage: pageNumber
+    });
+  };
 };
 
 export default TableContainer;
