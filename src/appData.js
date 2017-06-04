@@ -1,5 +1,6 @@
 export const INITIAL_DATA = [
   {
+    "id": "1",
     "combustivel": "Flex",
     "imagem": null,
     "marca": "Volkswagem",
@@ -7,6 +8,7 @@ export const INITIAL_DATA = [
     "placa": "FFF-5498",
     "valor": 20000
   }, {
+    "id": "2",
     "combustivel": "Gasolina",
     "imagem": null,
     "marca": "Volkswagem",
@@ -14,6 +16,7 @@ export const INITIAL_DATA = [
     "placa": "FOX-4125",
     "valor": 20000
   }, {
+    "id": "3",
     "combustivel": "Álcool",
     "imagem": "http://carros.ig.com.br/fotos/2010/290_193/Fusca2_290_193.jpg",
     "marca": "Volkswagen",
@@ -21,6 +24,7 @@ export const INITIAL_DATA = [
     "placa": "PAI-4121",
     "valor": 20000
   }, {
+    "id": "4",
     "combustivel": "Gasolina",
     "imagem": null,
     "marca": "Ford",
@@ -28,6 +32,7 @@ export const INITIAL_DATA = [
     "placa": "SAS-3312",
     "valor": 20000
   }, {
+    "id": "5",
     "combustivel": "Flex",
     "imagem": null,
     "marca": "Audi",
@@ -35,6 +40,7 @@ export const INITIAL_DATA = [
     "placa": "ZAS-3312",
     "valor": 89000
   }, {
+    "id": "6",
     "combustivel": "Flex",
     "imagem": null,
     "marca": "Fiat",

@@ -11,9 +11,9 @@ const getImage = imageURL => {
   return 'Sem foto'
 }
 
-const CarTableItem = ({ car, isSelected = false }) => (
+const CarTableItem = ({ car, isSelected = false, onSelectCar }) => (
   <div className="CarTableItem-wrapper">
-    <div className="CarTableItem-checkbox"><input type="checkbox" /></div>
+    <div className="CarTableItem-checkbox"><input type="checkbox" checked={isSelected} onChange={(event) => {onSelectCar(event.target.checked, car.id)}} /></div>
     <div className="CarTableItem-column">{car.placa}</div>
     <div className="CarTableItem-column">{car.modelo}</div>
     <div className="CarTableItem-column">{car.marca}</div>
