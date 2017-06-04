@@ -4,8 +4,9 @@ import Input from '../../Input';
 import './CarForm.css';
 import Button from '../../Button';
 import { validateCarForm } from '../core';
+import Alert from '../../Alert';
 
-const CarForm = ({ onSubmitHandler = () => {} }) => (
+const CarForm = ({ onSubmitHandler, validationErrors }) => (
   <div className="CarForm-wrapper">
     <form onSubmit={(event) => {onSubmitHandler(event, validateCarForm(event));}}>
       <div className="CarForm-inline">
@@ -41,6 +42,12 @@ const CarForm = ({ onSubmitHandler = () => {} }) => (
       </div>
 
       <div className="CarForm-info">* Campos obrigatórios</div>
+      
+      {
+        validationErrors.length > 0 ?
+        <Alert alertTitle="Ops!" className="red" contentArray={validationErrors} /> :
+        null
+      }
       
       <Button className="blue" type="submit">Salvar</Button>
     </form>
