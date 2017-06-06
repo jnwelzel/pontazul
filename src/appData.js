@@ -1,5 +1,13 @@
 export const INITIAL_DATA = [
   {
+    "id": "3",
+    "combustivel": "Álcool",
+    "imagem": "http://carros.ig.com.br/fotos/2010/290_193/Fusca2_290_193.jpg",
+    "marca": "Volkswagen",
+    "modelo": "Fusca",
+    "placa": "PAI-4121",
+    "valor": 20000
+  }, {
     "id": "1",
     "combustivel": "Flex",
     "imagem": null,
@@ -14,14 +22,6 @@ export const INITIAL_DATA = [
     "marca": "Volkswagem",
     "modelo": "Fox",
     "placa": "FOX-4125",
-    "valor": 20000
-  }, {
-    "id": "3",
-    "combustivel": "Álcool",
-    "imagem": "http://carros.ig.com.br/fotos/2010/290_193/Fusca2_290_193.jpg",
-    "marca": "Volkswagen",
-    "modelo": "Fusca",
-    "placa": "PAI-4121",
     "valor": 20000
   }
 ];

@@ -23,7 +23,7 @@ class TableContainer extends React.PureComponent {
       showForm: false,
       currentPage: 1,
       selectedItems: [],
-      filteredCarsArray: chunk(INITIAL_DATA.slice(), PAGE_SIZE),
+      filteredCarsArray: chunk(INITIAL_DATA.slice().sort(), PAGE_SIZE),
       validationErrors: [],
       allCarsSelected: false,
       carBeingEdited: null
@@ -185,6 +185,7 @@ class TableContainer extends React.PureComponent {
   deleteCarsHandler() {
     const newCarsArray = this.state.carsArray.filter(car => !this.state.selectedItems.includes(car.id));
     const moreThanOneCar = this.state.selectedItems.length > 1;
+    
     this.setState({
       carsArray: newCarsArray,
       selectedItems: [],
