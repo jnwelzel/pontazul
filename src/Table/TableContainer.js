@@ -1,5 +1,6 @@
 import React from 'react';
 import uuidV4 from 'uuid/v4';
+import Alert from 'react-s-alert';
 
 import Controls from './Controls';
 import { INITIAL_DATA } from '../appData';
@@ -34,6 +35,11 @@ class TableContainer extends React.PureComponent {
     this._paginationHandler = (pageNumber) => this.paginationHandler(pageNumber);
     this._onSelectCarHandler = (checked, id) => this.onSelectCarHandler(checked, id);
     this._onSelectAll = (checked) => this.onSelectAll(checked);
+    
+    this.alertConfig = {
+      effect: 'slide',
+      timeout: 2000
+    }
   };
   
   render() {
@@ -121,7 +127,6 @@ class TableContainer extends React.PureComponent {
       if (this.state.carBeingEdited === null) {
         newCarsArray = this.state.carsArray.slice();
         newCarsArray.push(carObject);
-        
       } else {
         newCarsArray = this.state.carsArray.map(carro => (carro.id === this.state.carBeingEdited.id ? carObject : carro));
         console.log('Editou carro!');
@@ -134,7 +139,7 @@ class TableContainer extends React.PureComponent {
         currentPage: 1,
         carBeingEdited: null,
         selectedItems: []
-      });
+      }, () => Alert.success('Carro salvo com sucesso', this.alertConfig));
     }
   };
   
@@ -179,13 +184,14 @@ class TableContainer extends React.PureComponent {
   
   deleteCarsHandler() {
     const newCarsArray = this.state.carsArray.filter(car => !this.state.selectedItems.includes(car.id));
+    const moreThanOneCar = this.state.selectedItems.length > 1;
     this.setState({
       carsArray: newCarsArray,
       selectedItems: [],
       allCarsSelected: false,
       filteredCarsArray: chunk(newCarsArray.slice(), PAGE_SIZE),
       currentPage: 1
-    })
+    }, () => Alert.success(moreThanOneCar ? 'Carros excluídos com sucesso' : 'Carro excluído com sucesso', this.alertConfig))
   }
   
   onClickEditHandler() {
