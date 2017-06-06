@@ -24,7 +24,8 @@ class TableContainer extends React.PureComponent {
       selectedItems: [],
       filteredCarsArray: chunk(INITIAL_DATA.slice(), PAGE_SIZE),
       validationErrors: [],
-      allCarsSelected: false
+      allCarsSelected: false,
+      carBeingEdited: null
     };
     
     this._searchHandler = (event) => this.searchHandler(event);
@@ -41,7 +42,7 @@ class TableContainer extends React.PureComponent {
       
       {
         this.state.showForm ?
-          <CarForm onSubmitHandler={this._submitFormHandler} validationErrors={this.state.validationErrors} /> :
+          <CarForm onSubmitHandler={this._submitFormHandler} validationErrors={this.state.validationErrors} carBeingEdited={this.state.carBeingEdited} /> :
           null
       }
       
@@ -106,8 +107,8 @@ class TableContainer extends React.PureComponent {
         validationErrors
       });
     } else {
-      const newCar = {
-        id: uuidV4(),
+      const carObject = {
+        id: this.state.carBeingEdited === null ? uuidV4() : this.state.carBeingEdited.id,
         placa: plateInput,
         modelo: modelInput,
         marca: brandInput,
@@ -115,14 +116,24 @@ class TableContainer extends React.PureComponent {
         combustivel: fuelInput,
         valor: costInput
       };
-      const newCarsArray = this.state.carsArray.slice();
-      newCarsArray.push(newCar);
+      let newCarsArray;
+      
+      if (this.state.carBeingEdited === null) {
+        newCarsArray = this.state.carsArray.slice();
+        newCarsArray.push(carObject);
+        
+      } else {
+        newCarsArray = this.state.carsArray.map(carro => (carro.id === this.state.carBeingEdited.id ? carObject : carro));
+        console.log('Editou carro!');
+      }
       
       this.setState({
         carsArray: newCarsArray.sort(compareCarPlates),
         filteredCarsArray: chunk(newCarsArray.slice(), PAGE_SIZE),
         showForm: false,
-        currentPage: 1
+        currentPage: 1,
+        carBeingEdited: null,
+        selectedItems: []
       });
     }
   };
@@ -180,7 +191,8 @@ class TableContainer extends React.PureComponent {
   onClickEditHandler() {
     this.setState({
       showForm: !this.state.showForm,
-      validationErrors: []
+      validationErrors: [],
+      carBeingEdited: this.state.carsArray.filter(car => (car.id === this.state.selectedItems[0]))[0]
     });
   }
 };

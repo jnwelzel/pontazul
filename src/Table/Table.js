@@ -5,7 +5,7 @@ import CarTableItem from './CarTableItem';
 
 const getCars = (carsArray, selectedCars, onSelectCar) => (
   carsArray.map((car, index) => (
-    <CarTableItem key={index} car={car} isSelected={selectedCars.includes(car.id)} onSelectCar={onSelectCar} />
+    <CarTableItem key={car.id} car={car} isSelected={selectedCars.includes(car.id)} onSelectCar={onSelectCar} />
   ))
 )
 
